@@ -1,0 +1,80 @@
+ // Bourbon & Neat
+@import '../../bower_components/bourbon/dist/bourbon';
+@import '../../bower_components/neat/app/assets/stylesheets/neat';
+$grid-columns: 12;
+
+// Custom Styles
+.header {
+  background-color: #d0d0d0;
+  line-height: 50px;
+  padding: 0 20px;
+  @include span-columns(12);
+}
+
+.slogan {
+  color: #a2a2a2;
+  @include span-columns(4);
+
+}
+
+.title {
+  color: #6c6c6c;
+  font-style: bold;
+  text-align: center;
+  @include span-columns(4);
+
+}
+
+.utility {
+  text-align: right;
+  @include span-columns(4);
+
+  .octicon {
+    color: #a2a2a2;
+    width: 32px;
+
+  }
+
+  .octicon:hover {
+    color: #6c6c6c;
+  }
+
+  .flaticon {
+    color: #a2a2a2;
+    font-size: 18px;
+    position: relative;
+    right: 5px;
+    top: 2px;
+
+  }
+
+  .flaticon:hover {
+    color: #6c6c6c;
+  }
+
+}
+
+.sidebar {
+  background-color: #e6e6e6;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  top: 52px;
+  @include span-columns(1.5);
+
+}
+
+.sidebar-title {
+  color: #a2a2a2;
+  text-align: center;
+}
+
+.sidebar-break {
+  width: 50px;
+}
+
+.container {
+  display: inline-block;
+  @include span-columns(9);
+  @include shift(1.5);
+}

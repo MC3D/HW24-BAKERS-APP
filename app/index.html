@@ -1,0 +1,110 @@
+<!doctype html>
+<html class='no-js'>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='description' content=''>
+    <meta name='viewport' content='width=device-width, initial-scale=1, minimal-ui'>
+    <title>HW24 BAKERS APP</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel='stylesheet' href='../bower_components/normalize-css/normalize.css' />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel='stylesheet' href='styles/main.css'>
+    <link rel='stylesheet' href='../bower_components/octicons/octicons.css'>
+    <link rel='stylesheet' type='text/css' href='../bower_components/flaticon/flaticon.css'>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src='../bower_components/modernizr/modernizr.js'></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <script type='text/x-handlebars' data-template-name='application'>
+      <div class='header'>
+        <span class='slogan'>The kitchen is yours, chef!</span>
+        <span class='title'>BATCH MAKER</span>
+        <span class='utility'>
+          <a href=# class='octicon octicon-plus'></a>
+          <a href=# class='octicon octicon-gear'></a>
+          <a href=# class='flaticon flaticon-chef25'></a>
+          <!-- <div>Icon made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>-->
+        </span>
+      </div>
+
+      <div class='sidebar'>
+        <p class='sidebar-title'>My Recipes</p><hr class='sidebar-break' />
+        <p class='sidebar-title'>Public<br>Recipes</p><hr class='sidebar-break' />
+        <p class='sidebar-title'>Popular<br>Recipes</p><hr class='sidebar-break' />
+        <p class='sidebar-title'>My Favorite<br>Recipes</p><hr class='sidebar-break' />
+        <p class='sidebar-title'>My Pantry</p>
+      </div>
+
+      <div class='container'>
+        {{outlet}}
+      </div>
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='login'>
+      <h1>Enter Site Description Here</h1>
+      <h3>Log In Here</h3>
+      <div class='input'>
+        {{input type='text' value=username placeholder='Enter User Name'}}
+        {{input type='password' value=password placeholder='Enter Password'}}
+        <button {{action 'createNewUser'}}>Create Account</button>
+        <button {{action 'logIn'}}>Log In</button>
+      </div>
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='newUser'>
+      <h1>Welcome</h1>
+      <div class='input'>
+        {{input type='text' value=newUser placeholder='Create User Name'}}
+        {{input type='password' value=setPassword placeholder='Create Password'}}
+        <button {{action 'createNewUser'}}>Create Account</button>
+      </div>
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='recipes'>
+      <h1>Recipes</h1>
+
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='food'>
+      <h1>Food</h1>
+
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='ingredientsFood'>
+      <h1>Ingredients</h1>
+
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='pantryFood'>
+      <h1>Pantry</h1>
+
+    </script>
+
+    <script src='bower_components/jquery/jquery.js'></script>
+    <script src='bower_components/handlebars/handlebars.js'></script>
+    <script src='bower_components/ember/ember.js'></script>
+    <script src='bower_components/ember-data/ember-data.js'></script>
+    <script src='bower_components/firebase/firebase.js'></script>
+    <script src='bower_components/emberfire/dist/emberfire.js'></script>
+    <script src='bower_components/moment/moment.js'></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js js/main.js -->
+    <script src='scripts/application.js'></script>
+    <script src='scripts/router.js'></script>
+    <script src='scripts/controllers/login_controller.js'></script>
+    <script src='scripts/controllers/newUser_controller.js'></script>
+    <script src='scripts/models/newUser.js'></script>
+
+</body>
+</html>
