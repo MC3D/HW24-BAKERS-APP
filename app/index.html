@@ -53,7 +53,7 @@
     <script type='text/x-handlebars' data-template-name='login'>
       <div class='login'>
         <div class='input'>
-          {{input type='email' class='login-input' value=username placeholder='Email'}}
+          {{input type='email' class='login-input' value=currentUser placeholder='Email'}}
           {{input type='password' class='login-input' value=password placeholder='Password'}}
           <button type='submit' class="btn btn-success" {{action 'logIn'}}>Sign In</button>
 
@@ -62,7 +62,7 @@
             {{input type='text' class='create-user-input' value=setUser placeholder='User name'}}
             {{input type='email' class='create-user-input' value=setEmail placeholder='Email'}}
             {{input type='password' class='create-user-input' value=setPassword placeholder='Password'}}
-            <button class='btn btn-info' {{action 'createNewUser'}}>Sign Up</button>
+            <button type='submit' class='btn btn-info' {{action 'createNewUser'}}>Sign Up</button>
 
         </div>
       </div>
@@ -72,20 +72,20 @@
       <h1>Recipes</h1>
     </script>
 
-    <script type='text/x-handlebars' data-template-name='recipe'>
+    <script type='text/x-handlebars' data-template-name='addRecipe'>
       <h1>Basic Info</h1>
-      {{input type='text' class='details-input' value=setRecipeName placeholder='Recipe Name'}}
+      {{input type='text' class='details-input' value=setName placeholder='Recipe Name'}}
       {{input type='text' class='details-input' value=setAuthor placeholder='By'}}
 
       <label>{{input type='checkbox' name="isPublic" checked=isPublic}} Make it Public</label>
 
-      {{view Ember.Select content=recipeType}}
+      {{view Ember.Select content=recipeType value=selectedRecipeType prompt="Recipe Type"}}
 
       {{input type='text' class='details-input' value=setPrepTime placeholder='Prep Time'}}
       {{input type='text' class='details-input' value=setCookTime placeholder='Cook Time'}}
       {{input type='text' class='details-input' value=setCookTemp placeholder='Cook Temp'}}
 
-      {{view Ember.Select content=tempScale}}
+      {{view Ember.Select content=tempScale value=selectedTempScale}}
 
       <span>This recipe will make</span>
 
@@ -101,7 +101,7 @@
       <button class='btn btn-info' {{action 'addStep'}}>Add Another Step</button>
 
       {{input type='text' class='details-input' value=setNotes placeholder=''}}
-      <button class='btn btn-success' {{action 'saveRecipe'}}>Save Recipe</button>
+      <button class='btn btn-success' {{action 'addRecipe'}}>Save Recipe</button>
 
     </script>
 
@@ -135,9 +135,10 @@
     <!-- build:js js/main.js -->
     <script src='scripts/application.js'></script>
     <script src='scripts/router.js'></script>
+    <script src='scripts/controllers/application_controller.js'></script>
     <script src='scripts/controllers/login_controller.js'></script>
+    <script src='scripts/controllers/add_recipe_controller.js'></script>
     <script src='scripts/models/login.js'></script>
-    <script src='scripts/controllers/recipe_controller.js'></script>
-    <script src='scripts/models/recipe.js'></script>
+    <script src='scripts/models/add_recipe.js'></script>
 </body>
 </html>

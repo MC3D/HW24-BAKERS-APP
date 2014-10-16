@@ -5,11 +5,17 @@
 
   Application.LoginController = Ember.ArrayController.extend({
     needs: ['application'],
+    currentUser:'',
 
     actions: {
+
       logIn: function() {
-      this.transitionToRoute('recipes');
-    },
+        this.set('controllers.application.currentUser', {
+          currentUser: this.get('currentUser')
+        });
+
+        this.transitionToRoute('addRecipe');
+      },
 
       createNewUser: function() {
         var users = this.store.createRecord('user', {
@@ -18,7 +24,12 @@
           password: this.get('setPassword'),
         });
         users.save();
-        this.transitionToRoute('recipes');
+
+        this.set('controllers.application.currentUser', {
+          currentUser: this.get('setEmail')
+        });
+
+        this.transitionToRoute('addRecipe');
       }
 
 
