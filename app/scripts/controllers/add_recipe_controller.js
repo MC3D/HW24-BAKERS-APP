@@ -10,8 +10,9 @@
 
     actions: {
       addRecipe: function() {
+        var user = this.get('controllers.application.currentUser.user');
         var recipes = this.store.createRecord('recipe', {
-          user: this.get('controllers.application.currentUser'),
+          user: user,
           name: this.get('setName'),
           author: this.get('setAuthor'),
           public: this.get('isPublic'),
@@ -30,9 +31,5 @@
     }
 
   });
-
-  // Application.RecipeController = Ember.ObjectController.extend({
-  //
-  // });
 
 })();

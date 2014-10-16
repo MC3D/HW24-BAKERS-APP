@@ -26,7 +26,7 @@
         users.save();
 
         this.set('controllers.application.currentUser', {
-          currentUser: this.get('setEmail')
+          user: this.get('setEmail')
         });
 
         this.transitionToRoute('addRecipe');
