@@ -11,4 +11,6 @@
     firebase: new Firebase('https://mybatchmaker.firebaseio.com/')
   });
 
+  Application.ref = new Firebase('https://mybatchmaker.firebaseio.com/');
+
 })();

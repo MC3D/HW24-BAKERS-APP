@@ -6,7 +6,9 @@
   Application.Router.map(function() {
 
       this.route('login', {path: '/'});
-      this.route('newUser', {path: '/newUser'});
+      this.route('recipes', {path:'/recipes'});
+      this.route('recipe', {path:'/recipes/recipe'});
+      // this.route('newUser', {path: '/newUser'});
 
 
       // this.route('logout', {path: '/'});
@@ -24,9 +26,9 @@
 
 
     Application.LogInRoute = Ember.Route.extend({
-      model: function() {
-        return this.store.find('user');
-      }
+      // model: function() {
+      //   return this.store.find('user');
+      // }
     });
 
 

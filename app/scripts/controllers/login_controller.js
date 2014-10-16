@@ -7,24 +7,29 @@
     needs: ['application'],
 
     actions: {
-      createNewUser: function() {
-        this.transitionToRoute('newUser');
-      },
-
       logIn: function() {
-        // var user = {
-        //   username: this.get('username'),
-        //   password: this.get('password'),
-        // };
+      this.transitionToRoute('recipes');
+    },
 
-        if (this.store.find('user','-JZKDNMZ-DDxAxscE84z')) {
-          console.log('yes');
-        } else {
-          console.log('no');
-        }
-
+      createNewUser: function() {
+        var users = this.store.createRecord('user', {
+          username: this.get('setUser'),
+          email: this.get('setEmail'),
+          password: this.get('setPassword'),
+        });
+        users.save();
+        this.transitionToRoute('recipes');
       }
+
+
+
+
     }
+
+
+
+
+
   });
 
 })();

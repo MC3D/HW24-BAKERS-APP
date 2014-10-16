@@ -4,11 +4,12 @@
     <meta charset='utf-8'>
     <meta name='description' content=''>
     <meta name='viewport' content='width=device-width, initial-scale=1, minimal-ui'>
-    <title>HW24 BAKERS APP</title>
+    <title>BAKERS APP</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,700,300,600,400' rel='stylesheet' type='text/css'>
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.1/css/bootstrap.min.css">
     <link rel='stylesheet' href='../bower_components/normalize-css/normalize.css' />
     <!-- endbower -->
     <!-- endbuild -->
@@ -50,29 +51,60 @@
     </script>
 
     <script type='text/x-handlebars' data-template-name='login'>
-      <h1>Enter Site Description Here</h1>
-      <h3>Log In Here</h3>
-      <div class='input'>
-        {{input type='text' value=username placeholder='Enter User Name'}}
-        {{input type='password' value=password placeholder='Enter Password'}}
-        <button {{action 'createNewUser'}}>Create Account</button>
-        <button {{action 'logIn'}}>Log In</button>
-      </div>
-    </script>
+      <div class='login'>
+        <div class='input'>
+          {{input type='email' class='login-input' value=username placeholder='Email'}}
+          {{input type='password' class='login-input' value=password placeholder='Password'}}
+          <button type='submit' class="btn btn-success" {{action 'logIn'}}>Sign In</button>
 
-    <script type='text/x-handlebars' data-template-name='newUser'>
-      <h1>Welcome</h1>
-      <div class='input'>
-        {{input type='text' value=newUser placeholder='Create User Name'}}
-        {{input type='password' value=setPassword placeholder='Create Password'}}
-        <button {{action 'createNewUser'}}>Create Account</button>
+
+            <h2>New to Batch Maker?<span>Join today!</span></h2>
+            {{input type='text' class='create-user-input' value=setUser placeholder='User name'}}
+            {{input type='email' class='create-user-input' value=setEmail placeholder='Email'}}
+            {{input type='password' class='create-user-input' value=setPassword placeholder='Password'}}
+            <button class='btn btn-info' {{action 'createNewUser'}}>Sign Up</button>
+
+        </div>
       </div>
     </script>
 
     <script type='text/x-handlebars' data-template-name='recipes'>
       <h1>Recipes</h1>
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='recipe'>
+      <h1>Basic Info</h1>
+      {{input type='text' class='details-input' value=setRecipeName placeholder='Recipe Name'}}
+      {{input type='text' class='details-input' value=setAuthor placeholder='By'}}
+
+      <label>{{input type='checkbox' name="isPublic" checked=isPublic}} Make it Public</label>
+
+      {{view Ember.Select content=recipeType}}
+
+      {{input type='text' class='details-input' value=setPrepTime placeholder='Prep Time'}}
+      {{input type='text' class='details-input' value=setCookTime placeholder='Cook Time'}}
+      {{input type='text' class='details-input' value=setCookTemp placeholder='Cook Temp'}}
+
+      {{view Ember.Select content=tempScale}}
+
+      <span>This recipe will make</span>
+
+      {{input type='text' class='details-input' value=setYield placeholder='Amount'}}
+      {{input type='text' class='details-input' value=setYieldLabel placeholder='cookies, loaves, etc.'}}
+
+
+      {{input type='text' class='details-input' value=setQty placeholder='Amount'}}
+      {{input type='text' class='details-input' value=setUnit placeholder='Unit'}}
+      {{input type='text' class='details-input' value=setIngredient placeholder='Ingredient'}}
+
+      {{input type='text' class='details-input' value=setDirections placeholder='What directions go with this step?'}}
+      <button class='btn btn-info' {{action 'addStep'}}>Add Another Step</button>
+
+      {{input type='text' class='details-input' value=setNotes placeholder=''}}
+      <button class='btn btn-success' {{action 'saveRecipe'}}>Save Recipe</button>
 
     </script>
+
 
     <script type='text/x-handlebars' data-template-name='food'>
       <h1>Food</h1>
@@ -81,6 +113,7 @@
 
     <script type='text/x-handlebars' data-template-name='ingredientsFood'>
       <h1>Ingredients</h1>
+
 
     </script>
 
@@ -103,8 +136,8 @@
     <script src='scripts/application.js'></script>
     <script src='scripts/router.js'></script>
     <script src='scripts/controllers/login_controller.js'></script>
-    <script src='scripts/controllers/newUser_controller.js'></script>
-    <script src='scripts/models/newUser.js'></script>
-
+    <script src='scripts/models/login.js'></script>
+    <script src='scripts/controllers/recipe_controller.js'></script>
+    <script src='scripts/models/recipe.js'></script>
 </body>
 </html>
