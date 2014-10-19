@@ -10,7 +10,7 @@
 
     actions: {
       addRecipe: function() {
-        var user = this.get('controllers.application.currentUser.user');
+        var user = this.get('controllers.application.currentUser.email');
         var recipes = this.store.createRecord('recipe', {
           user: user,
           name: this.get('setName'),

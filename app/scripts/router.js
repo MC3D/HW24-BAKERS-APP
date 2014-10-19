@@ -10,7 +10,7 @@
       this.route('addRecipe', {path:'/recipes/add'});
 
       // this.route('logout', {path: '/'});
-            
+
       // this.route('editUser', {path: '/'});
       // this.route('modifyRecipe', {path: '/'});
       //
@@ -21,10 +21,10 @@
 
 
 
-    Application.LogInRoute = Ember.Route.extend({
+    Application.Recipes = Ember.Route.extend({
       // model: function() {
-      //   return this.store.find('user');
-      // }
+      //   return this.store.find('recipes');
+      //   }
     });
 
 

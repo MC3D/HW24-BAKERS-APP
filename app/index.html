@@ -54,7 +54,7 @@
       <div class='login'>
         <div class='input'>
           {{input type='email' class='login-input' value=currentUser placeholder='Email'}}
-          {{input type='password' class='login-input' value=password placeholder='Password'}}
+          {{input type='password' class='login-input' value=password placeholder='Password'}}<br>
           <button type='submit' class="btn btn-success" {{action 'logIn'}}>Sign In</button>
 
 
@@ -62,7 +62,7 @@
             {{input type='text' class='create-user-input' value=setUser placeholder='User name'}}
             {{input type='email' class='create-user-input' value=setEmail placeholder='Email'}}
             {{input type='password' class='create-user-input' value=setPassword placeholder='Password'}}
-            <button type='submit' class='btn btn-info' {{action 'createNewUser'}}>Sign Up</button>
+            <button class='btn btn-info' {{action 'createNewUser'}}>Sign Up</button>
 
         </div>
       </div>
@@ -70,39 +70,48 @@
 
     <script type='text/x-handlebars' data-template-name='recipes'>
       <h1>Recipes</h1>
+
+
+
     </script>
 
     <script type='text/x-handlebars' data-template-name='addRecipe'>
+    <div class='add-recipe'>
       <h1>Basic Info</h1>
-      {{input type='text' class='details-input' value=setName placeholder='Recipe Name'}}
-      {{input type='text' class='details-input' value=setAuthor placeholder='By'}}
+      <img class='img-recipe' src='#'>
+      {{input type='text' class='details-input x-large' value=setName placeholder='Recipe Name'}}
+      {{input type='text' class='details-input x-large' value=setAuthor placeholder='By'}}
 
-      <label>{{input type='checkbox' name="isPublic" checked=isPublic}} Make it Public</label>
+      <label>{{input type='checkbox' name="isPublic" class='checkbox' checked=isPublic}} Make it Public</label>
 
-      {{view Ember.Select content=recipeType value=selectedRecipeType prompt="Recipe Type"}}
+      {{view Ember.Select class='details-input medium' content=recipeType value=selectedRecipeType prompt="Recipe Type"}}
 
-      {{input type='text' class='details-input' value=setPrepTime placeholder='Prep Time'}}
-      {{input type='text' class='details-input' value=setCookTime placeholder='Cook Time'}}
-      {{input type='text' class='details-input' value=setCookTemp placeholder='Cook Temp'}}
+      {{input type='text' class='details-input small' value=setPrepTime placeholder='Prep Time'}}
+      {{input type='text' class='details-input small' value=setCookTime placeholder='Cook Time'}}
+      {{input type='text' class='details-input small' value=setCookTemp placeholder='Cook Temp'}}
 
-      {{view Ember.Select content=tempScale value=selectedTempScale}}
+      {{view Ember.Select class='details-input x-small' content=tempScale value=selectedTempScale}}
 
       <span>This recipe will make</span>
 
-      {{input type='text' class='details-input' value=setYield placeholder='Amount'}}
-      {{input type='text' class='details-input' value=setYieldLabel placeholder='cookies, loaves, etc.'}}
+      {{input type='text' class='details-input small' value=setYield placeholder='Amount'}}
+      {{input type='text' class='details-input large' value=setYieldLabel placeholder='cookies, loaves, etc.'}}
 
+      <div class='step-ingredient'>
+        {{input type='text' class='details-input small' value=setQty placeholder='Amount'}}
+        {{input type='text' class='details-input small' value=setUnit placeholder='Unit'}}
+        {{input type='text' class='details-input large' value=setIngredient placeholder='Ingredient'}}
+        <button class='btn btn-info add' {{action 'add-ingredient'}}><span class="mega-octicon octicon-plus plus-sign"></span></button>
+      </div>
+      <!-- <button class='btn btn-info remove' {{action 'remove'}}><span class="mega-octicon octicon-dash minus-sign"></span></button> -->
 
-      {{input type='text' class='details-input' value=setQty placeholder='Amount'}}
-      {{input type='text' class='details-input' value=setUnit placeholder='Unit'}}
-      {{input type='text' class='details-input' value=setIngredient placeholder='Ingredient'}}
-
-      {{input type='text' class='details-input' value=setDirections placeholder='What directions go with this step?'}}
+      {{textarea type='text' class='details-input text' value=setDirections placeholder='What directions go with this step?'}}
       <button class='btn btn-info' {{action 'addStep'}}>Add Another Step</button>
 
-      {{input type='text' class='details-input' value=setNotes placeholder=''}}
+      <h1>Personal Notes</h1>
+      {{textarea type='text' class='details-input text' value=setNotes placeholder=''}}
       <button class='btn btn-success' {{action 'addRecipe'}}>Save Recipe</button>
-
+    </div>
     </script>
 
 
@@ -138,6 +147,7 @@
     <script src='scripts/controllers/application_controller.js'></script>
     <script src='scripts/controllers/login_controller.js'></script>
     <script src='scripts/controllers/add_recipe_controller.js'></script>
+    <script src='scripts/controllers/recipes_controller.js'></script>
     <script src='scripts/models/login.js'></script>
     <script src='scripts/models/add_recipe.js'></script>
 </body>
