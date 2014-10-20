@@ -5,25 +5,21 @@
 
   Application.LoginController = Ember.ArrayController.extend({
     needs: ['application'],
-    currentUser: '',
+    currentUser: Ember.computed.alias('controllers.application.currentUser'),
 
     actions: {
 
       logIn: function() {
         var self = this;
-        // ask Jake about computed alias?
-
         Application.ref.authWithPassword({
           email: this.get('userEmail'),
           password: this.get('userPassword')
         }, function(error, authData) {
           if (error === null) {
-            self.set('controllers.application.currentUser', {
-              /// get username ///
-              email: self.get('userEmail'),
+            self.store.find('user', authData.uid).then(function(user) {
+              self.set('currentUser', user);
             });
             self.transitionToRoute('addRecipe');
-            // user authenticated with Firebase
             console.log('User ID: ' + authData.uid + ', Provider: ' + authData.provider);
           } else {
             console.log('Error authenticating user:', error);
@@ -33,28 +29,36 @@
 
       createNewUser: function() {
         var self = this;
+        var user = this.get('setUser');
+        var email = this.get('setEmail');
+        var password = this.get('setPassword');
 
-        Application.ref.createUser({
-          email: this.get('setEmail'),
-          password: this.get('setPassword')
-        }, function(error) {
+        var data = {
+          email: email,
+          password: password
+        };
+
+        Application.ref.createUser(data, function(error) {
           if (error === null) {
-            // set controllers.application.currentUser
-            self.set('controllers.application.currentUser', {
-              username: self.get('setUser'),
-              email: self.get('setEmail'),
-              password: self.get('setPassword')
+            Application.ref.authWithPassword(data, function(error, authData) {
+              if (error === null) {
+                var users = self.store.createRecord('user', {
+                  id: authData.uid,
+                  username: user,
+                  email: email
+                });
+                users.save().then(function() {
+                  self.store.find('user', authData.uid).then(function(user) {
+                    console.log(user);
+                    self.set('currentUser', user);
+                  });
+                });
+                console.log('User created successfully');
+                self.transitionToRoute('welcome');
+              } else {
+                console.log('Error creating user:', error);
+              }
             });
-            // create user record
-            var users = self.store.createRecord('user', {
-              username: self.get('setUser'),
-              email: self.get('setEmail')
-            });
-            users.save();
-            console.log('User created successfully');
-            self.transitionToRoute('welcome');
-          } else {
-            console.log('Error creating user:', error);
           }
         });
       }

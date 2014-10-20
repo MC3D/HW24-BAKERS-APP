@@ -22,11 +22,11 @@
 
 
 
-    Application.Recipes = Ember.Route.extend({
-      // model: function() {
-      //   return this.store.find('recipes');
-      //   }
-    });
+  //   Application.Welcome = Ember.Route.extend({
+  //     setupController: function(controller, model) {
+  //       controller.set('welcome', model);
+  // }
+  //   });
 
 
 })();

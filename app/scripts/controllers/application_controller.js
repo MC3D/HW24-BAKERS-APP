@@ -4,7 +4,9 @@
   'use strict';
 
   Application.ApplicationController = Ember.Controller.extend({
-    currentUser: null
+    currentUser: ''
 });
+
+
 
 })();
