@@ -53,8 +53,8 @@
     <script type='text/x-handlebars' data-template-name='login'>
       <div class='login'>
         <div class='input'>
-          {{input type='email' class='login-input' value=currentUser placeholder='Email'}}
-          {{input type='password' class='login-input' value=password placeholder='Password'}}<br>
+          {{input type='email' class='login-input' value=userEmail placeholder='Email'}}
+          {{input type='password' class='login-input' value=userPassword placeholder='Password'}}<br>
           <button type='submit' class="btn btn-success" {{action 'logIn'}}>Sign In</button>
 
 
@@ -65,6 +65,13 @@
             <button class='btn btn-info' {{action 'createNewUser'}}>Sign Up</button>
 
         </div>
+      </div>
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='welcome'>
+      <div class='welcome'>
+        <h2>Welcome to Batch Maker! The kitchen is yours, Mady!</h2>
+        <button class='btn btn-success' {{action 'logIn'}}>Continue</button>
       </div>
     </script>
 
@@ -146,6 +153,7 @@
     <script src='scripts/router.js'></script>
     <script src='scripts/controllers/application_controller.js'></script>
     <script src='scripts/controllers/login_controller.js'></script>
+    <script src='scripts/controllers/welcome_controller.js'></script>
     <script src='scripts/controllers/add_recipe_controller.js'></script>
     <script src='scripts/controllers/recipes_controller.js'></script>
     <script src='scripts/models/login.js'></script>

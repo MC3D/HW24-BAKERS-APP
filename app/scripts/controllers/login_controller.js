@@ -14,13 +14,13 @@
         // ask Jake about computed alias?
 
         Application.ref.authWithPassword({
-          email: this.get('currentUser'),
-          password: this.get('password')
+          email: this.get('userEmail'),
+          password: this.get('userPassword')
         }, function(error, authData) {
           if (error === null) {
             self.set('controllers.application.currentUser', {
-              email: self.get('currentUser'),
-              password: self.get('password')
+              /// get username ///
+              email: self.get('userEmail'),
             });
             self.transitionToRoute('addRecipe');
             // user authenticated with Firebase
@@ -42,7 +42,8 @@
             // set controllers.application.currentUser
             self.set('controllers.application.currentUser', {
               username: self.get('setUser'),
-              email: self.get('setEmail')
+              email: self.get('setEmail'),
+              password: self.get('setPassword')
             });
             // create user record
             var users = self.store.createRecord('user', {
@@ -50,8 +51,8 @@
               email: self.get('setEmail')
             });
             users.save();
-
             console.log('User created successfully');
+            self.transitionToRoute('welcome');
           } else {
             console.log('Error creating user:', error);
           }

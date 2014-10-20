@@ -6,6 +6,7 @@
   Application.Router.map(function() {
 
       this.route('login', {path: '/'});
+      this.route('welcome',{path:'/welcome'});
       this.route('recipes', {path:'/recipes'});
       this.route('addRecipe', {path:'/recipes/add'});
 
