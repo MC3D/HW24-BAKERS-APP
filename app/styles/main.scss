@@ -19,6 +19,7 @@ body {
   background-color: #d0d0d0;
   line-height: 50px;
   padding: 0 20px;
+  position: fixed;
   @include span-columns(12);
 }
 
@@ -69,11 +70,14 @@ body {
 
 .sidebar {
   background-color: #e6e6e6;
-  height: 100vh;
+  height: 100%;
+  margin-top: 52px;
   min-width: 150px;
+  padding-bottom: 30px;
   padding-top: 30px;
-  position: relative;
+  position: fixed;
   text-align: center;
+  z-index: -1;
   @include span-columns(1.5);
 
 }
@@ -93,7 +97,7 @@ body {
 
 .login {
   background-color: #e6e6e6;
-  margin-top: 50px;
+  margin: 100px auto;
   padding: 20px 60px;
   text-align: right;
   @include span-columns(8);
@@ -131,9 +135,11 @@ body {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 .add-recipe {
-
-  margin: 0 auto;
-  width: 560px;
+  background: #e6e6e6;
+  height: 854px;
+  margin: 100px auto;
+  padding: 20px;
+  width: 600px;
 
   .img-recipe {
     background-color: #d0d0d0;
@@ -143,7 +149,6 @@ body {
   }
 
   .details-input {
-    background-color: #e6e6e6;
     height: 40px;
     margin-bottom: 14px;
     margin-right: 5px;
