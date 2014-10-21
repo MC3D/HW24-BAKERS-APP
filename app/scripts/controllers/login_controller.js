@@ -17,7 +17,8 @@
         }, function(error, authData) {
           if (error === null) {
             self.store.find('user', authData.uid).then(function(user) {
-              self.set('currentUser', user);
+              localStorage.setItem('userData', JSON.stringify(user));
+              self.set('currentUser', JSON.parse(localStorage.getItem('userData')));
             });
             self.transitionToRoute('addRecipe');
             console.log('User ID: ' + authData.uid + ', Provider: ' + authData.provider);
@@ -51,7 +52,6 @@
                   self.store.find('user', authData.uid).then(function(user) {
                     // console.log(user);
                     localStorage.setItem('userData', JSON.stringify(user));
-                    console.log(localStorage);
                     self.set('currentUser', JSON.parse(localStorage.getItem('userData')));
                   });
                 });
