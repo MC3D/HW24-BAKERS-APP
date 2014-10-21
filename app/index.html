@@ -27,7 +27,7 @@
   <body>
     <script type='text/x-handlebars' data-template-name='application'>
       <div class='header'>
-        <span class='slogan'>The kitchen is yours, <b>{{currentUser.username}}</b>!</span>
+        <span class='slogan'>The kitchen is yours, {{currentUser.username}}!</span>
         <span class='title'>BATCH MAKER</span>
         <span class='utility'>
           <a href=# class='octicon octicon-plus'></a>
@@ -70,7 +70,7 @@
 
     <script type='text/x-handlebars' data-template-name='welcome'>
       <div class='welcome'>
-        <h2>Welcome to Batch Maker! The kitchen is yours, <b>{{currentUser.username}}</b>!</h2>
+        <h2>Welcome to Batch Maker! The kitchen is yours, {{currentUser.username}}!</h2>
         <button class='btn btn-success' {{action 'continue'}}>Continue</button>
       </div>
     </script>

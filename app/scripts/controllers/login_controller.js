@@ -49,8 +49,10 @@
                 });
                 users.save().then(function() {
                   self.store.find('user', authData.uid).then(function(user) {
-                    console.log(user);
-                    self.set('currentUser', user);
+                    // console.log(user);
+                    localStorage.setItem('userData', JSON.stringify(user));
+                    console.log(localStorage);
+                    self.set('currentUser', JSON.parse(localStorage.getItem('userData')));
                   });
                 });
                 console.log('User created successfully');
