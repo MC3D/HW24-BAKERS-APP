@@ -4,7 +4,7 @@
     <meta charset='utf-8'>
     <meta name='description' content=''>
     <meta name='viewport' content='width=device-width, initial-scale=1, minimal-ui'>
-    <title>BAKERS APP</title>
+    <title>BATCH MAKER</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,700,300,600,400' rel='stylesheet' type='text/css'>
     <!-- build:css styles/vendor.css -->
@@ -105,7 +105,7 @@
       {{input type='text' class='details-input large' value=setYieldLabel placeholder='cookies, loaves, etc.'}}
 
       <div class='step-ingredient'>
-        {{input type='text' class='details-input small' value=setQty placeholder='Amount'}}
+        {{input type='text' class='details-input small' value=setAmount placeholder='Amount'}}
         {{input type='text' class='details-input small' value=setUnit placeholder='Unit'}}
         {{input type='text' class='details-input large' value=setIngredient placeholder='Ingredient'}}
         <button class='btn btn-info add' {{action 'add-ingredient'}}><span class="mega-octicon octicon-plus plus-sign"></span></button>

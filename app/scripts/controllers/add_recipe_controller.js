@@ -10,9 +10,9 @@
 
     actions: {
       addRecipe: function() {
-        var user = this.get('controllers.application.currentUser.email');
+        var userRef = this.get('controllers.application.currentUser.userRef');
         var recipes = this.store.createRecord('recipe', {
-          user: user,
+          userRef: userRef,
           name: this.get('setName'),
           author: this.get('setAuthor'),
           public: this.get('isPublic'),
@@ -23,10 +23,24 @@
           cookScale: this.get('selectedTempScale'),
           yield: this.get('setYield'),
           yieldLabel: this.get('setYieldLabel'),
+          step: {
+            embedded: 'always'
+          },
           notes: this.get('setNotes'),
         });
         recipes.save();
         // this.transitionToRoute('recipes');
+      },
+
+      addStep: function() {
+        var steps = this.store.createRecord('step', {
+          amount: this.get('setAmount'),
+          unit: this.get('setUnit'),
+          ingredient: this.get('setIngredient'),
+          directions: this.get('setDirections'),
+
+        });
+        steps.save();
       }
     }
 
